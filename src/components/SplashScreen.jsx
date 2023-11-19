@@ -40,11 +40,14 @@ const SplashScreen = ({setShowNext, setComponent}) => {
 
         <p className='text-center text-[0.8em] py-6 w-4/5'>Empowering Connectivity: Seamlessly Share Across <span className='font-semibold text-primary1'>Devices</span>.</p>
 
-        <button className='absolute bottom-0  bg-white text-black py-4 left-xPadding right-xPadding rounded-lg font-bold flex  items-center justify-center gap-2'
+        <button className='absolute bottom-12 bg-white text-black py-4 left-xPadding right-xPadding rounded-lg font-bold flex  items-center justify-center gap-2'
             onClick={()=> {setShowNext(true); setComponent(<CollectUsername setComponent={setComponent}/>)}}
         >
             Continue <HiArrowRight />
         </button>
+        <p className='absolute bottom-0 text-white text-[0.8em] py-4 left-xPadding right-xPadding text-center'>
+            sendrr v1.0
+        </p>
     </div>
   )
 }
