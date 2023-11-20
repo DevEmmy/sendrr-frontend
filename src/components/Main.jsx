@@ -16,7 +16,7 @@ const Main = () => {
 
     const [showDialogue, setShowDialogue] = useState(false)
     const [message, setMessage] = useState()
-    const [receiver, setReceiver] = useState(data.devices[0])
+    const [receiver, setReceiver] = useState(data.devices[0] || [])
 
     const [imessages, setMessages] = useState([])
     
