@@ -8,7 +8,7 @@ import { io } from "socket.io-client";
 import { getData, saveData } from './utils/saveData'
 import Main from './components/Main'
 import Connect from './components/Connect'
-import { toastError, toastSuccess } from './utils/toaster'
+import { toastError, toastMessage, toastSuccess } from './utils/toaster'
 import { Toaster } from 'react-hot-toast'
 
 export let socket = io("http://192.168.140.168:3030");
@@ -46,7 +46,7 @@ socket.on("joined", (data)=> {
 })
 
 socket.on("receive", (data)=>{
-  toastSuccess("New Message")
+  toastMessage("New Message")
   // console.log(payload)
 })
 

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { infinity } from 'ldrs'
 import { HiChevronDown, HiChevronUp, HiClipboardCopy, HiPaperAirplane, HiPlus, HiShare, HiX } from 'react-icons/hi'
+import { RiFileCopyFill } from 'react-icons/ri'
 import { getData, saveData } from '../utils/saveData'
 import { toastSuccess } from '../utils/toaster'
 import { socket } from '../App'
 import { useDisclosure } from '@mantine/hooks';
 import { Modal, Button } from '@mantine/core';
+import CopyToClipboard from 'react-copy-to-clipboard'
 
 infinity.register()
 const Main = () => {
@@ -16,20 +18,21 @@ const Main = () => {
     const [message, setMessage] = useState()
     const [receiver, setReceiver] = useState(data.devices[0])
 
-    const [messages, setMessages] = useState([])
+    const [imessages, setMessages] = useState([])
     
 
-    useEffect(()=>{
+    // useEffect(()=>{
         socket.on("receive", (data)=>{
             // toastSuccess("New Message")
-            let news = messages;
+            let news = imessages;
             news.push(data.content)
             
-            console.log(news)
-            setMessages([data.content, ...messages])
+            // console.log(news)
+            setMessages([...imessages ])
+            // console.log(imessages)
           })
 
-    }, [socket])
+    // }, [])
 
 
 
@@ -46,33 +49,30 @@ const Main = () => {
 
         console.log(payload)
         socket.emit("send", payload);
+        toastSuccess("Sent")
+
+        // setShowDialogue(false)
+        setMessage("")
     }
 
   return (
-    <div className='bg-black text-white flex h-full min-h-[100vh] flex-col px-xPadding py-8 max-w-full'>
-        <div className="flex items-center justify-between">
-            <p className='text-[1em] font-bold'>Greetings, My Chief👋🏽</p>
+    <div className='bg-[rgb(20,20,20)] text-white flex h-full min-h-[100vh] flex-col px-xPadding py-8 max-w-full'>
+        <div className="flex items-start justify-between">
+            <p className='text-[1.5em] font-bold  p-0 leading-none'>Greetings 👋🏽</p>
 
-            <div>
-            <l-infinity
-                size="30"
-                stroke="4"
-                stroke-length="0.15"
-                bg-opacity="0.1"
-                speed="1.3" 
-                color="#A706A5" 
-            />
+            <div className='font-bold'>
+            sendrr<span className='text-primary1'>.</span>
             </div>
         </div>
 
-        <div className='py-3 text-[0.8em] flex flex-col gap-3'>
-            <p>My Device: <span className='bg-primary1 py-0 font-bold px-3 rounded-3xl'>{data.username}</span></p>
+        <div className='py-3 text-[0.8em] flex flex-col gap-3 border-2 border-gray-200 my-6 px-4 rounded-lg'>
+            <p>My Device: <span className='text-primary1 underline py-0 font-bold text-[1.2em]'>{data.username}</span></p>
 
             <p>
-                Connection Code: <span className='bg-primary1 py-0 font-bold px-3 rounded-3xl'>{data.code}</span> 
+                Connection Code: <span className='text-primary1 underline py-0 font-bold text-[1.2em] '>{data.code}</span> 
             </p>
 
-            <div className='flex flex-col bg-primary3 border-primary1 border-2 rounded-lg px-3 py-5 font-bold'>
+            <div className='flex flex-col bg-[rgba(200,200,200,0.2)] border-primary1 border-2 rounded-lg px-3 py-5 font-bold'>
             <div className='flex items-center justify-between'>
                 <p>My Devices</p>
 
@@ -104,13 +104,14 @@ const Main = () => {
 
         <div>
             <h2>
-                Shared Contents
+                Received Messages
             </h2>
 
             <div className='my-5 flex flex-col gap-3'>
 
                 {
-                    messages.map((m, i)=>{
+
+                    imessages.map((m, i)=>{
                         return(
                              <div className='bg-primary3 border-primary1 p-4 rounded-lg border-2'>
                                 <p className='flex gap-1 items-center text-[0.7em]'> <HiShare /> from {m.senderUsername} </p>
@@ -118,7 +119,11 @@ const Main = () => {
                                 <div className='flex items-center justify-between gap-4 w-full'>
                                     <p className='font-bold max-w-[80%] line-clamp-2'>{m.content}</p>
 
-                                    <HiClipboardCopy className='bg-primary5 rounded-full p-[5px]' size={30}/>
+                                    <CopyToClipboard text={m.content}
+                                        onCopy={() => toastSuccess("Copied!")} className='bg-primary5 rounded-full p-[5px]'>
+                                        <RiFileCopyFill size={30}/>
+                                    </CopyToClipboard>
+                                    
                                 </div>
                             </div>
                         )
@@ -136,7 +141,7 @@ const Main = () => {
 
         {
             showDialogue &&
-            <div className='fixed top-0 h-[100vh] left-0 right-0 bg-black z-30 py-10 px-xPadding'>
+            <div className='fixed top-0 h-[100vh] left-0 right-0 bg-[rgb(20,20,20)] z-30 py-10 px-xPadding'>
             <div className="flex justify-end">
                 <HiX size={24} onClick={()=> setShowDialogue(false)}/>
             </div>

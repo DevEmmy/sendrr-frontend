@@ -13,7 +13,7 @@ const Connect = ({setComponent}) => {
 
     
   return (
-    <div className='bg-black text-white flex h-[100vh] gap-6 flex-col items-center justify-center px-xPadding'>
+    <div className='bg-[rgb(20,20,20)] text-white flex h-[100vh] gap-6 flex-col items-center justify-center px-xPadding'>
         {
             component &&
             <div className="return absolute top-6 left-xPadding text-white" onClick={()=> setCom(null)}>

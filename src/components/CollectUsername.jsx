@@ -21,7 +21,7 @@ const CollectUsername = ({setComponent}) => {
     }
 
   return (
-    <div className='bg-black text-white flex h-[100vh] flex-col items-center justify-center px-xPadding'>
+    <div className='bg-[rgb(20,20,20)] text-white flex h-[100vh] flex-col items-center justify-center px-xPadding'>
         <p className='font-bold'>Let's Get Personal: Drop Your Username Charm Here!</p>
         <input type="text" placeholder="Emmy's phone/pc" className='p-4 rounded-md my-2 w-full bg-transparent border-gray-500 text-[0.8em] border-[1px] text-white' value={username} onChange={handleUsername}/>
 

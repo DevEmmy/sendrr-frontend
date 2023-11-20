@@ -8,7 +8,7 @@ infinity.register()
 
 const SplashScreen = ({setShowNext, setComponent}) => {
   return (
-    <div className='bg-black text-white flex h-[100vh] flex-col items-center justify-center px-xPadding'>
+    <div className='bg-[rgb(20,20,20)] text-white flex h-[100vh] flex-col items-center justify-center px-xPadding'>
         <motion.p
 
         initial= {{
@@ -35,7 +35,7 @@ const SplashScreen = ({setShowNext, setComponent}) => {
         stroke-length="0.15"
         bg-opacity="0.1"
         speed="1.3" 
-        color="#A706A5" 
+        color="#741786" 
         ></l-infinity>
 
         <p className='text-center text-[0.8em] py-6 w-4/5'>Empowering Connectivity: Seamlessly Share Across <span className='font-semibold text-primary1'>Devices</span>.</p>

@@ -7,11 +7,11 @@ const config = {
     extend: {
   
       colors: {
-        primary1: "#A706A5",
-        primary2: "#CA3CC6",
-        primary3: "#EE61E8",
-        primary4: "#FF84FF",
-        primary5: "#FFA6FF"
+        primary1: "#741786",
+        primary2: "#9B40AC",
+        primary3: "#C366D3",
+        primary4: "#EC8CFB",
+        primary5: "#FFB3FF"
       },
       spacing: {
         xPadding: '5.2%',
