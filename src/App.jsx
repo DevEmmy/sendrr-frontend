@@ -11,7 +11,7 @@ import Connect from './components/Connect'
 import { toastError, toastMessage, toastSuccess } from './utils/toaster'
 import { Toaster } from 'react-hot-toast'
 
-export let socket = io("http://192.168.140.168:3030");
+export let socket = io("https://sendrr-backend.onrender.com");
 export let socketId;
 
 socket.on("connect", () => {
