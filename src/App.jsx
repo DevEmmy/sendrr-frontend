@@ -61,6 +61,11 @@ function App() {
     // localStorage.clear()
     let data = getData()
 
+    if(data.code && !data.devices){
+      data.devices = []
+      saveData(data)
+    }
+
     if(data?.code){
       socket.emit("saveUsername", data)
       setComponent(<Main />)
