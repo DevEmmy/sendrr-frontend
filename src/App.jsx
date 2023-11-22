@@ -61,7 +61,7 @@ function App() {
     // localStorage.clear()
     let data = getData()
 
-    if(data.code && !data.devices){
+    if(data?.code && !data?.devices){
       data.devices = []
       saveData(data)
     }
