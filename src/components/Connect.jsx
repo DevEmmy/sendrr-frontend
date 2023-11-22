@@ -92,6 +92,11 @@ const Create = ({setComponent})=>{
             <button className=' bg-white text-black py-4 mt-6  rounded-lg font-bold flex w-full items-center justify-center gap-2'
             onClick={()=> {
                 // handleSubmit()    
+                if(devices.length == 0){
+                    let myData = getData()
+                    myData.devices = []
+                    saveData(myData)
+                }
                 setComponent(<Main />)
             }}
         >
